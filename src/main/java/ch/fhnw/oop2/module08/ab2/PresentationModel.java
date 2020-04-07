@@ -1,7 +1,5 @@
 package ch.fhnw.oop2.module08.ab2;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -9,7 +7,7 @@ public final class PresentationModel {
 	
 	private StringProperty buttonLabelProperty;
 	private StringProperty AppTitleProperty;
-	private BooleanProperty buttonStateProperty;
+	private boolean state;
 	
 	
 	public PresentationModel() {
@@ -17,7 +15,7 @@ public final class PresentationModel {
 			
 		buttonLabelProperty = new SimpleStringProperty("OFF");
 		AppTitleProperty = new SimpleStringProperty("Toggle Application");
-		buttonStateProperty = new SimpleBooleanProperty(false);
+		state = false;
 	
 	}
 	
@@ -30,13 +28,8 @@ public final class PresentationModel {
 		return AppTitleProperty;
 	}
 	
-	public BooleanProperty getButtonStateProperty() {
-		return buttonStateProperty;
-		
-	}
-	
 	public void toggleButton() {
-		buttonStateProperty.set(!buttonStateProperty.getValue());
-		buttonLabelProperty.set(buttonStateProperty.getValue() ? "ON" :"OFF" );
+		state = !state;
+		buttonLabelProperty.set(state ? "ON" :"OFF" );
 	}
 }
